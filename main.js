@@ -47,28 +47,35 @@ var templateTable = function(data) {
               '<th>login</th>' +
               '<th>e-mail</th>' +
               '<th>created</th>' +
-            '<tr>' +
+            '</tr>' +
             '<tr>' +
               '<td>' + data.users[0].id + '</td>' +
               '<td>' + data.users[0].name + '</td>' +
               '<td>' + data.users[0].login + '</td>' +
               '<td>' + data.users[0].email + '</td>' +
               '<td>' + data.users[0].created + '</td>' +
-            '<tr>' +
-            '<tr>' +
-              '<tr>' +
-              '<td>' + data.users.map(function(users) {
-      users.id
-    }).id + '</td>' +
-              '<td>' + data.users[1].name + '</td>' +
-              '<td>' + data.users[1].login + '</td>' +
-              '<td>' + data.users[1].email + '</td>' +
-              '<td>' + data.users[1].created + '</td>' +
-            '<tr>' +
+            '</tr>' +
+
+              data.users.map(function(users) {
+                '<tr>' +
+                  '<td>' + users.id + '</td>' +
+                  '<td>' + users.name + '</td>' +
+                  '<td>' + users.login + '</td>' +
+                  '<td>' + users.email + '</td>' +
+                  '<td>' + users.created + '</td>' +
+                '</tr>'
+              }).join('')
+
           '</table>'
 }
 
 var tableContainer = document.getElementById('app');
-console.log(jsonData[0].users[0].name);
+// console.log(jsonData[0].users[0].name);
+
+console.log(jsonData[0].users.map(function(users) {
+    console.log(users.name);
+})
+);
+
 tableContainer.insertAdjacentHTML('beforeend', templateTable(jsonData[0]));
 
