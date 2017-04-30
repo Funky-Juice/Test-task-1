@@ -26,7 +26,7 @@ var jsonData = [{
   ]
 }]
 
-
+// шаблон таблицы
 var templateTable = function(data) {
   return '<table class="table">' +
             '<tr>' +
@@ -43,24 +43,40 @@ var templateTable = function(data) {
               '<td>' + users.name + '</td>' +
               '<td>' + users.login + '</td>' +
               '<td>' + users.email + '</td>' +
-              '<td>' + users.created + '</td>' +
+              '<td>' + formatDate(users.created) + '</td>' +
             '</tr>'
-
-            // '<input class="delete-btn" type="button" value="Удалить">'
   }).join('')
 
           '</table>'
 }
 
+// форматирование даты
+function formatDate(data) {
+  var msUTC = Date.parse(data);
+  var date = new Date(msUTC);
+
+  function getMonthName(date) {
+    var months = ['янв.', 'фев.', 'март', 'апр.', 'май', 'июнь', 'июль', 'авг.', 'сент.', 'окт.', 'нояб.', 'дек.'];
+
+    return months[date.getMonth()];
+  }
+
+  var newData = date.toLocaleString('ru', {weekday: 'short'}) + ', ' + date.getDate() + ' ' + getMonthName(date) + ' ' + date.getFullYear() + ' г.';
+  return(newData);
+}
+
+
 var tableContainer = document.getElementById('app');
 
+// добавляем в разметку таблицу из шаблона с добавленными данными из json
 tableContainer.insertAdjacentHTML('beforeend', templateTable(jsonData[0]));
+
 
 var table = tableContainer.querySelector('.table');
 var tableBody = table.querySelector('tbody');
 var tableRow = table.getElementsByTagName('tr');
 
-
+// добавляем строкам таблицы кнопки для удаления строк
 for (var i = 1; i < tableRow.length; i++) {
   var btn = document.createElement('input');
   btn.setAttribute('type', 'button');
@@ -72,23 +88,13 @@ for (var i = 1; i < tableRow.length; i++) {
 
 var deleteRawBtn = table.querySelectorAll('.delete-btn');
 
+// навешиваем обработчик события на кнопки
 for (var p = 0; p < deleteRawBtn.length; p++) {
   deleteRawBtn[p].addEventListener('click', function() {
     var tr = this.parentNode;
     tableBody.removeChild(tr);
   });
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
