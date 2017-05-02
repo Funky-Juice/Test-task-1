@@ -35,7 +35,7 @@ var templateTable = function(data) {
               '<td>' + users.id + '</td>' +
               '<td>' + users.name + '</td>' +
               '<td>' + users.login + '</td>' +
-              '<td>' + users.email + '</td>' +
+              '<td class="editable">' + users['e-mail'] + '</td>' +
               '<td>' + formatDate(users.created) + '</td>' +
             '</tr>'
   }).join('')
@@ -64,34 +64,78 @@ var tableContainer = document.getElementById('app');
 
 var showTable = function(data) {
   tableContainer.insertAdjacentHTML('beforeend', templateTable(data));
+
+  createRowBtn();
+  editField();
 }
 
 // добавляем в разметку таблицу из шаблона с добавленными данными из json
 callbackLoad(showTable);
 
-var table = tableContainer.querySelector('.table');
-var tableBody = table.querySelector('tbody');
-var tableRow = table.getElementsByTagName('tr');
+function createRowBtn() {
+  var table = tableContainer.querySelector('#app .table');
+  var tableBody = table.querySelector('tbody');
+  var tableRow = table.getElementsByTagName('tr');
 
 // добавляем строкам таблицы кнопки для удаления строк
-for (var i = 1; i < tableRow.length; i++) {
-  var btn = document.createElement('input');
-  btn.setAttribute('type', 'button');
-  btn.setAttribute('value', 'Удалить');
-  btn.classList.add('delete-btn');
+  for (var i = 1; i < tableRow.length; i++) {
+    var btn = document.createElement('input');
+    btn.setAttribute('type', 'button');
+    btn.setAttribute('value', 'Удалить');
+    btn.classList.add('delete-btn');
 
-  tableRow[i].appendChild(btn);
-}
+    tableRow[i].appendChild(btn);
+  }
 
-var deleteRawBtn = table.querySelectorAll('.delete-btn');
+  var deleteRawBtn = table.querySelectorAll('.delete-btn');
 
 // навешиваем обработчик события на кнопки
-for (var p = 0; p < deleteRawBtn.length; p++) {
-  deleteRawBtn[p].addEventListener('click', function() {
-    var tr = this.parentNode;
-    tableBody.removeChild(tr);
-  });
+  for (var p = 0; p < deleteRawBtn.length; p++) {
+    deleteRawBtn[p].addEventListener('click', function() {
+      var tr = this.parentNode;
+      tableBody.removeChild(tr);
+    });
+  }
 }
+
+
+
+function editField() {
+  var table = tableContainer.querySelector('#app .table');
+  var editableFields = table.querySelectorAll('.editable');
+
+  function enterKeydown(evt) {
+    if (evt.keyCode == 13) {
+      console.log('enter')
+      editableFields.setAttribute('contenteditable', 'false');
+    }
+  }
+
+  for(var i = 0; i < editableFields.length; i++) {
+
+    editableFields[i].addEventListener('click', function(evt) {
+
+      this.setAttribute('contenteditable', 'true');
+      window.addEventListener('keydown', enterKeydown());
+    })
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
