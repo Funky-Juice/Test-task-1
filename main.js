@@ -1,30 +1,23 @@
 'use strcit';
 
-var jsonData = [{
-  "users": [
-    {
-      "id": 1,
-      "name": "Иванов Иван",
-      "login": "Ivan1988",
-      "email": "Ivan1988@fake.com",
-      "created": "2017-04-29T09:35:30.666Z"
-    },
-    {
-      "id": 2,
-      "name": "Петров Петр",
-      "login": "PetyaPetushok1986",
-      "email": "PetyaPetushok@fake.com",
-      "created": "2017-04-20T09:35:30.666Z"
-    },
-    {
-      "id": 3,
-      "name": "Содоров Сидор",
-      "login": "Sidor1985",
-      "email": "SidorFedor@fake.com",
-      "created": "2017-03-18T09:35:30.666Z"
+// загрузка данных с сервера
+function callbackLoad(callback) {
+  var xhr = new XMLHttpRequest();
+  var loadedData = [];
+
+  xhr.addEventListener('load', function(evt) {
+    try {
+      loadedData = JSON.parse(evt.target.response);
+      callback(loadedData);
+    } catch (err) {
+      console.log(err);
     }
-  ]
-}]
+  });
+
+  xhr.open('GET', 'http://localhost:3000/db');
+  xhr.timeout = 5000;
+  xhr.send();
+}
 
 // шаблон таблицы
 var templateTable = function(data) {
@@ -68,9 +61,13 @@ function formatDate(data) {
 
 var tableContainer = document.getElementById('app');
 
-// добавляем в разметку таблицу из шаблона с добавленными данными из json
-tableContainer.insertAdjacentHTML('beforeend', templateTable(jsonData[0]));
 
+var showTable = function(data) {
+  tableContainer.insertAdjacentHTML('beforeend', templateTable(data));
+}
+
+// добавляем в разметку таблицу из шаблона с добавленными данными из json
+callbackLoad(showTable);
 
 var table = tableContainer.querySelector('.table');
 var tableBody = table.querySelector('tbody');
