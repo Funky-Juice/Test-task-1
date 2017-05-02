@@ -8,11 +8,11 @@ var editField = require('./edit-field');
 var templateTable = function(data) {
   return '<table class="table">' +
     '<tr>' +
-    '<th>id</th>' +
-    '<th>name</th>' +
-    '<th>login</th>' +
-    '<th>e-mail</th>' +
-    '<th>created</th>' +
+    '<th>ID</th>' +
+    '<th>Имя</th>' +
+    '<th>Логин</th>' +
+    '<th>Электронная почта</th>' +
+    '<th>Дата регистрации</th>' +
     '</tr>' +
 
     data.users.map(function(users) {
