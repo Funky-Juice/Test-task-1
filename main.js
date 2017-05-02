@@ -17,7 +17,7 @@ function callbackLoad(callback) {
   xhr.open('GET', 'http://localhost:3000/db');
   xhr.timeout = 5000;
   xhr.send();
-}
+};
 
 // шаблон таблицы
 var templateTable = function(data) {
@@ -41,7 +41,7 @@ var templateTable = function(data) {
   }).join('')
 
           '</table>'
-}
+};
 
 // форматирование даты
 function formatDate(data) {
@@ -56,7 +56,7 @@ function formatDate(data) {
 
   var newData = date.toLocaleString('ru', {weekday: 'short'}) + ', ' + date.getDate() + ' ' + getMonthName(date) + ' ' + date.getFullYear() + ' г.';
   return(newData);
-}
+};
 
 
 var tableContainer = document.getElementById('app');
@@ -67,7 +67,7 @@ var showTable = function(data) {
 
   createRowBtn();
   editField();
-}
+};
 
 // добавляем в разметку таблицу из шаблона с добавленными данными из json
 callbackLoad(showTable);
@@ -96,7 +96,7 @@ function createRowBtn() {
       tableBody.removeChild(tr);
     });
   }
-}
+};
 
 
 
@@ -106,20 +106,25 @@ function editField() {
 
   function enterKeydown(evt) {
     if (evt.keyCode == 13) {
-      console.log('enter')
-      editableFields.setAttribute('contenteditable', 'false');
+      evt.preventDefault();
+      this.setAttribute('contenteditable', 'false');
+      window.removeEventListener('keydown', enterKeydown);
     }
   }
 
   for(var i = 0; i < editableFields.length; i++) {
 
-    editableFields[i].addEventListener('click', function(evt) {
-
+    editableFields[i].addEventListener('click', function() {
       this.setAttribute('contenteditable', 'true');
-      window.addEventListener('keydown', enterKeydown());
+      window.addEventListener('keydown', enterKeydown);
+
+      this.onblur = function() {
+        this.setAttribute('contenteditable', 'false');
+        window.removeEventListener('keydown', enterKeydown);
+      }
     })
   }
-}
+};
 
 
 
