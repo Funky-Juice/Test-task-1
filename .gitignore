@@ -1,5 +1,6 @@
 .DS_Store
 Thumbs.db
+build.js
 .idea/*
 .idea/workspace.xml
 node_modules/

@@ -1,11 +1,12 @@
 {
-  "name": "Test-task-1",
+  "name": "test-task-1",
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "json-server": "json-server --watch data/users.json",
-    "start": "npm run json-server"
+    "json-server": "json-server data/users.json --static .data/",
+    "webpack": "webpack ./js/main.js build.js",
+    "start": "npm run webpack && npm run json-server"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
   },
   "homepage": "https://github.com/Funky-Juice/Test-task-1#readme",
   "devDependencies": {
-    "json-server": "^0.10.0"
+    "json-server": "^0.10.0",
+    "webpack": "^1.15.0"
   }
 }
