@@ -1,0 +1,24 @@
+{
+  "name": "Test-task-1",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "json-server": "json-server --watch data/users.json",
+    "start": "npm run json-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Funky-Juice/Test-task-1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Funky-Juice/Test-task-1/issues"
+  },
+  "homepage": "https://github.com/Funky-Juice/Test-task-1#readme",
+  "devDependencies": {
+    "json-server": "^0.10.0"
+  }
+}
