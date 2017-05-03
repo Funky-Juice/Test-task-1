@@ -1,12 +1,13 @@
 'use strict';
 
 var utils = require('./utils');
-var showTable = require('./template-table');
-var showForm = require('./template-form');
+var renderTable = require('./template-table');
+var renderForm = require('./template-form');
 
 var DATA_URL = 'http://localhost:3000/db';
 
 // добавляем в DOM таблицу из шаблона с загруженными данными из json
-utils.callbackLoad(DATA_URL, showTable);
+utils.callbackLoad(DATA_URL, renderTable);
 
-showForm();
+// добавляем в DOM форму создания нового пользователя
+renderForm();

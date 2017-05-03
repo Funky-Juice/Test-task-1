@@ -2,6 +2,7 @@
 
 var submitForm = require('./submit-form');
 
+// шаблон формы
 var templateForm = function() {
   return '<form class="user-form">' +
             '<label class="user-form__item">' +
@@ -29,11 +30,11 @@ var templateForm = function() {
 };
 
 // добавление формы в разметку
-var showForm = function() {
+var renderForm = function() {
   var tableContainer = document.getElementById('app');
   tableContainer.insertAdjacentHTML('beforeend', templateForm());
 
   submitForm();
 }
 
-module.exports = showForm;
+module.exports = renderForm;

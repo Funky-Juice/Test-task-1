@@ -29,15 +29,15 @@ var templateTable = function(data) {
 };
 
 // добавление таблицы в разметку
-var showTable = function(data) {
+var renderTable = function(data) {
   var tableContainer = document.getElementById('app');
   tableContainer.insertAdjacentHTML('beforeend', templateTable(data));
 
   // добавление кнопки
   createRowBtn();
 
-  // редактиерование поля
+  // редактирование поля
   editField();
 };
 
-module.exports = showTable;
+module.exports = renderTable;
