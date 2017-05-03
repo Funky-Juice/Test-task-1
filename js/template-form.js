@@ -1,5 +1,7 @@
 'use strict';
 
+var submitForm = require('./submit-form');
+
 var templateForm = function() {
   return '<form class="user-form">' +
             '<label class="user-form__item">' +
@@ -22,7 +24,7 @@ var templateForm = function() {
               '<input class="user-form__input" type="text" name="user_name" placeholder="Registration date" required>' +
             '</label>' +
 
-            '<input class="user-form__send-btn" type="submit">' +
+            '<input id="form-sbmt" class="user-form__send-btn" type="submit">' +
           '</form>'
 };
 
@@ -30,6 +32,8 @@ var templateForm = function() {
 var showForm = function() {
   var tableContainer = document.getElementById('app');
   tableContainer.insertAdjacentHTML('beforeend', templateForm());
+
+  submitForm();
 }
 
 module.exports = showForm;

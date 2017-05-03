@@ -22,18 +22,34 @@ body {
 }
 
 .user-form {
-  width: 50%;
+  width: 360px;
   margin: 50px auto;
+  padding: 20px;
+  border: 1px solid grey;
   text-align: center;
 }
 
 .user-form__item {
   display: block;
-  margin-bottom: 20px;
+  width: 200px;
+  margin: 0 auto 10px;
+  padding: 5px;
 }
 
+.user-form__field-name {
+  display: block;
+  text-align: left;
+  margin-bottom: 5px;
+}
 
+.user-form__input {
+  display: block;
+  padding: 10px;
+}
 
+.user-form__send-btn {
+  margin: 30px auto;
+}
 
 
 
