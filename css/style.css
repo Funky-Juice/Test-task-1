@@ -3,6 +3,8 @@ body {
 }
 
 .table {
+  position: relative;
+  min-width: 700px;
   margin: 50px auto;
   border-collapse: collapse;
 }
@@ -11,13 +13,13 @@ body {
 .table td {
   padding: 10px;
   border: 1px solid grey;
-}
-
-.table tr {
-  position: relative;
+  text-align: center;
 }
 
 .delete-btn {
+  position: absolute;
+  right: -80px;
+  margin-top: 4px;
   padding: 5px;
 }
 

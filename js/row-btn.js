@@ -1,10 +1,20 @@
 'use strict';
 
-// добавляем строкам таблицы кнопки для удаления строк
+// добавляем строкам таблицы кнопки для удаления этих строк
 function createRowBtn() {
   var table = document.querySelector('#app .table');
   var tableBody = table.querySelector('tbody');
   var tableRow = table.getElementsByTagName('tr');
+  var deleteBtn = table.querySelectorAll('.delete-btn');
+
+  // проверка наличия и удаление всех кнопок перед их добавлением в таблицу
+  if(deleteBtn.length !== 0) {
+
+    for (var q = 0; q < deleteBtn.length; q++){
+      deleteBtn[q].removeEventListener('click', deleteRaw);
+      deleteBtn[q].parentNode.removeChild(deleteBtn[q]);
+    };
+  };
 
   // создаем кнопки
   for (var i = 1; i < tableRow.length; i++) {
@@ -12,19 +22,15 @@ function createRowBtn() {
     btn.setAttribute('type', 'button');
     btn.setAttribute('value', 'Удалить');
     btn.classList.add('delete-btn');
+    btn.addEventListener('click', deleteRaw);
 
     tableRow[i].appendChild(btn);
-  }
+  };
 
-  var deleteRawBtn = table.querySelectorAll('.delete-btn');
-
-  // навешиваем обработчик события
-  for (var p = 0; p < deleteRawBtn.length; p++) {
-    deleteRawBtn[p].addEventListener('click', function() {
-      var tr = this.parentNode;
-      tableBody.removeChild(tr);
-    });
-  }
+  function deleteRaw() {
+    var elem = this.parentNode;
+    tableBody.removeChild(elem);
+  };
 };
 
 module.exports = createRowBtn;
