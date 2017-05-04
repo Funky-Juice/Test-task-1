@@ -11,3 +11,4 @@ utils.callbackLoad(DATA_URL, renderTable);
 
 // добавляем в DOM форму создания нового пользователя
 renderForm();
+
