@@ -13,7 +13,7 @@ function setRowId() {
     var newRowId = +lastRowId.innerText + 1;
   } else {
     newRowId = 1;
-  };
+    };
 
   return newRowId;
 }
@@ -25,7 +25,7 @@ var templateRow = function(data) {
             '<td>' + data.name + '</td>' +
             '<td>' + data.login + '</td>' +
             '<td class="editable">' + data['e-mail'] + '</td>' +
-            '<td>' + utils.formatDate(data.created) + '</td>' +
+            '<td>' + utils.formatDate(data['reg-date']) + '</td>' +
          '</tr>'
 };
 
