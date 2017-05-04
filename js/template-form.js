@@ -12,17 +12,17 @@ var templateForm = function() {
 
             '<label class="user-form__item">' +
               '<span class="user-form__field-name">Логин: </span>' +
-              '<input class="user-form__input" type="text" name="user_name" placeholder="Login" required>' +
+              '<input class="user-form__input" type="text" name="user_login" placeholder="Login" required>' +
             '</label>' +
 
             '<label class="user-form__item">' +
               '<span class="user-form__field-name">Электронная почта: </span>' +
-              '<input class="user-form__input" type="text" name="user_name" placeholder="example@mail.com" required>' +
+              '<input class="user-form__input" type="text" name="user_e-mail" placeholder="example@mail.com" required>' +
             '</label>' +
 
             '<label class="user-form__item">' +
               '<span class="user-form__field-name">Дата регистрации: </span>' +
-              '<input class="user-form__input" type="text" name="user_name" placeholder="Registration date" required>' +
+              '<input class="user-form__input" type="text" name="user_reg-date" placeholder="Registration date" required>' +
             '</label>' +
 
             '<input id="form-sbmt" class="user-form__send-btn" type="submit">' +
@@ -31,8 +31,8 @@ var templateForm = function() {
 
 // добавление формы в разметку
 var renderForm = function() {
-  var tableContainer = document.getElementById('app');
-  tableContainer.insertAdjacentHTML('beforeend', templateForm());
+  var appContainer = document.getElementById('app');
+  appContainer.insertAdjacentHTML('afterbegin', templateForm());
 
   submitForm();
 }

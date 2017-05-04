@@ -3,6 +3,7 @@
 var utils = require('./utils');
 var createRowBtn = require('./row-btn');
 var editField = require('./edit-field');
+var renderForm = require('./template-form');
 
 // шаблон таблицы
 var templateTable = function(data) {
@@ -17,7 +18,7 @@ var templateTable = function(data) {
 
     data.users.map(function(users) {
       return '<tr>' +
-        '<td>' + users.id + '</td>' +
+        '<td class="row-id">' + users.id + '</td>' +
         '<td>' + users.name + '</td>' +
         '<td>' + users.login + '</td>' +
         '<td class="editable">' + users['e-mail'] + '</td>' +
@@ -28,16 +29,21 @@ var templateTable = function(data) {
   '</table>'
 };
 
-// добавление таблицы в разметку
 var renderTable = function(data) {
-  var tableContainer = document.getElementById('app');
-  tableContainer.insertAdjacentHTML('beforeend', templateTable(data));
+  var appContainer = document.getElementById('app');
+  appContainer.classList.add('app-container');
+
+  // добавление таблицы в DOM
+  appContainer.insertAdjacentHTML('beforeend', templateTable(data));
 
   // добавление кнопки
   createRowBtn();
 
   // редактирование поля
   editField();
+
+  // добавляем форму создания нового пользователя
+  renderForm();
 };
 
 module.exports = renderTable;
