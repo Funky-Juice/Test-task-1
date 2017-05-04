@@ -8,25 +8,26 @@ var renderForm = require('./template-form');
 // шаблон таблицы
 var templateTable = function(data) {
   return '<table class="table">' +
-    '<tr>' +
-    '<th>ID</th>' +
-    '<th>Имя</th>' +
-    '<th>Логин</th>' +
-    '<th>Электронная почта</th>' +
-    '<th>Дата регистрации</th>' +
-    '</tr>' +
+            '<tbody >' +
+              '<tr>' +
+                '<th>ID</th>' +
+                '<th>Имя</th>' +
+                '<th>Логин</th>' +
+                '<th>Электронная почта</th>' +
+                '<th>Дата регистрации</th>' +
+              '</tr>' +
 
-    data.users.map(function(users) {
-      return '<tr>' +
-        '<td class="row-id">' + users.id + '</td>' +
-        '<td>' + users.name + '</td>' +
-        '<td>' + users.login + '</td>' +
-        '<td class="editable">' + users['e-mail'] + '</td>' +
-        '<td>' + utils.formatDate(users.created) + '</td>' +
-        '</tr>'
-    }).join('')
-
-  '</table>'
+      data.users.map(function(users) {
+        return '<tr>' +
+                  '<td class="row-id">' + users.id + '</td>' +
+                  '<td>' + users.name + '</td>' +
+                  '<td>' + users.login + '</td>' +
+                  '<td class="editable">' + users['e-mail'] + '</td>' +
+                  '<td>' + utils.formatDate(users.created) + '</td>' +
+                '</tr>'
+      }).join('');
+            '<tbody >' +
+          '</table>'
 };
 
 var renderTable = function(data) {

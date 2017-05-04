@@ -13,8 +13,8 @@ function editField() {
       window.addEventListener('keydown', enterKeydown);
 
       // запрет редактирования поля при потере фокуса
-      this.onblur = function() {
-        self.setAttribute('contenteditable', 'false');
+      self.onblur = function() {
+        this.setAttribute('contenteditable', 'false');
         window.removeEventListener('keydown', enterKeydown);
       }
 

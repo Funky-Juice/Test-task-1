@@ -1,5 +1,5 @@
-body {
-  padding-top: 100px;
+.app-container {
+  padding: 50px 0;
 }
 
 .table {
@@ -51,22 +51,19 @@ body {
 
 .user-form__send-btn {
   margin: 30px auto;
+  padding: 5px;
 }
 
 
 
+.user-form .error {
+  outline: 1px solid red;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+.user-form .error-text{
+  position: absolute;
+  display: block;
+  text-transform: none;
+  color: red;
+}
 

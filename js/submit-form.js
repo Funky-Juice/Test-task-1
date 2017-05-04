@@ -1,5 +1,6 @@
 'use strict';
 
+var validateForm = require('./validate-form');
 var addRow = require('./template-row');
 
 function getFormValues() {
@@ -20,6 +21,8 @@ function submitForm() {
 
   submitBtn.onclick = function(evt) {
     evt.preventDefault();
+
+    validateForm();
 
     var formData = getFormValues();
     addRow(formData);
