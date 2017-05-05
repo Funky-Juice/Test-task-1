@@ -20,6 +20,6 @@ function validateForm() {
       showError(input);
     }
   };
-}
+};
 
 module.exports = validateForm;
