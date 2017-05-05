@@ -25,17 +25,17 @@ module.exports = {
   formatDate: function(data) {
   var msUTC = Date.parse(data);
 
-    if(isNaN(msUTC)) {
-      var date = new Date();
-    } else {
-      date = new Date(msUTC);
-    };
+  if(isNaN(msUTC)) {
+    var date = new Date();
+  } else {
+    date = new Date(msUTC);
+  };
 
   function getMonthName(date) {
     var months = ['янв.', 'фев.', 'март', 'апр.', 'май', 'июнь', 'июль', 'авг.', 'сент.', 'окт.', 'нояб.', 'дек.'];
 
     return months[date.getMonth()];
-  }
+  };
 
   var newData = date.toLocaleString('ru', {weekday: 'short'}) + ', ' + date.getDate() + ' ' + getMonthName(date) + ' ' + date.getFullYear() + ' г.';
   return(newData);

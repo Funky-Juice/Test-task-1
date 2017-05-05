@@ -47,6 +47,7 @@
 .user-form__input {
   display: block;
   padding: 10px;
+  border: 1px solid grey;
 }
 
 .user-form__send-btn {
@@ -54,10 +55,8 @@
   padding: 5px;
 }
 
-
-
 .user-form .error {
-  outline: 1px solid red;
+  border: 1px solid red;
 }
 
 .user-form .error-text{
@@ -65,5 +64,5 @@
   display: block;
   text-transform: none;
   color: red;
+  font-size: 15px;
 }
-

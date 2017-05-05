@@ -7,17 +7,17 @@ var templateForm = function() {
   return '<form class="user-form">' +
             '<label class="user-form__item">' +
               '<span class="user-form__field-name">Имя: </span>' +
-              '<input class="user-form__input" type="text" name="user_name" placeholder="Иванов Иван" value="Иванов Иван" pattern="[А-Яа-яЁё\s]{1,20}" data-error="Укажите имя кириллицей" required>' +
+              '<input class="user-form__input" type="text" name="user_name" placeholder="Иванов Иван" pattern="[А-Яа-яЁё\s]{1,10}$" data-error="Укажите имя кириллицей" required>' +
             '</label>' +
 
             '<label class="user-form__item">' +
               '<span class="user-form__field-name">Логин: </span>' +
-              '<input class="user-form__input" type="text" name="user_login" placeholder="Ivan1988" value="Ivan1988" pattern="[A-Za-z0-9]{5,20}" data-error="Не менее 5 символов" required>' +
+              '<input class="user-form__input" type="text" name="user_login" placeholder="Ivan1988" pattern="^[A-Za-z0-9]{5,20}$" data-error="Не менее 5 символов" required>' +
             '</label>' +
 
             '<label class="user-form__item">' +
               '<span class="user-form__field-name">Электронная почта: </span>' +
-              '<input class="user-form__input" type="text" name="user_e-mail" placeholder="example@mail.com" value="example@mail.com" pattern="[A-Za-z0-9]{1,20}\@[A-Za-z]{1,10}\.[A-Za-z]{1,6}" data-error="Перепроверьте почту" required>' +
+              '<input class="user-form__input" type="text" name="user_e-mail" placeholder="example@mail.com" pattern="[A-Za-z0-9]{1,20}\@[A-Za-z]{1,10}\.[A-Za-z]{1,6}" data-error="Перепроверьте почту" required>' +
             '</label>' +
 
             '<label class="user-form__item">' +

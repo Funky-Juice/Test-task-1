@@ -16,7 +16,7 @@ function editField() {
       self.onblur = function() {
         this.setAttribute('contenteditable', 'false');
         window.removeEventListener('keydown', enterKeydown);
-      }
+      };
 
       // запрет редактирования поля при нажатии enter
       function enterKeydown(evt) {
@@ -25,9 +25,9 @@ function editField() {
           self.setAttribute('contenteditable', 'false');
           window.removeEventListener('keydown', enterKeydown);
         }
-      }
+      };
     });
-  }
+  };
 };
 
 module.exports = editField;

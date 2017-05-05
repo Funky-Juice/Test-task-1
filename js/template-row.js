@@ -13,10 +13,10 @@ function setRowId() {
     var newRowId = +lastRowId.textContent + 1;
   } else {
     newRowId = 1;
-    };
+  };
 
   return newRowId;
-}
+};
 
 // шаблон строки
 var templateRow = function(data) {
