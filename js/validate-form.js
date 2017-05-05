@@ -1,7 +1,16 @@
 'use strict';
 
 function showError(input) {
+  input.classList.add('error');
 
+  var text = input.getAttribute('data-error');
+  if (!text) return;
+
+  var div = document.createElement('div');
+  div.textContent = text;
+  div.className = 'error-text';
+
+  input.parentNode.appendChild(div);
 }
 
 function validateForm() {
