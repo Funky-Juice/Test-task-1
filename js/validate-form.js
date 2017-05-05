@@ -1,7 +1,6 @@
 'use strict';
 
-
-
+// проверка корректности заполнения полей формы
 function validateForm() {
   var userForm = document.querySelector('#app .user-form');
   var formInputs = userForm.querySelectorAll('.user-form__input');
@@ -12,7 +11,6 @@ function validateForm() {
     input.addEventListener('input', clearError);
 
     var pattern = input.getAttribute('pattern');
-
     pattern = new RegExp(pattern);
 
     if (pattern.test(input.value) !== true) {
@@ -22,19 +20,25 @@ function validateForm() {
   };
 };
 
+// вывод сообщения об ошибке в поле ввода формы
 function showError(input) {
-  input.classList.add('error');
+  var errorMessage = input.parentNode.querySelector('.error-text');
 
-  var text = input.getAttribute('data-error');
-  if (!text) return;
+  if(!errorMessage) {
+    input.classList.add('error');
 
-  var div = document.createElement('div');
-  div.textContent = text;
-  div.className = 'error-text';
+    var text = input.getAttribute('data-error');
+    if (!text) return;
 
-  input.parentNode.appendChild(div);
-}
+    var div = document.createElement('div');
+    div.textContent = text;
+    div.className = 'error-text';
 
+    input.parentNode.appendChild(div);
+  };
+};
+
+// удаление сообщения об ошибке
 function clearError() {
   this.classList.remove('error');
 

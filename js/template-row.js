@@ -10,7 +10,7 @@ function setRowId() {
 
   if(rowIdFields.length !== 0) {
     var lastRowId = rowIdFields[rowIdFields.length - 1];
-    var newRowId = +lastRowId.innerText + 1;
+    var newRowId = +lastRowId.textContent + 1;
   } else {
     newRowId = 1;
     };

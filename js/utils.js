@@ -24,7 +24,12 @@ module.exports = {
   // форматирование даты
   formatDate: function(data) {
   var msUTC = Date.parse(data);
-  var date = new Date(msUTC);
+
+    if(isNaN(msUTC)) {
+      var date = new Date();
+    } else {
+      date = new Date(msUTC);
+    };
 
   function getMonthName(date) {
     var months = ['янв.', 'фев.', 'март', 'апр.', 'май', 'июнь', 'июль', 'авг.', 'сент.', 'окт.', 'нояб.', 'дек.'];
