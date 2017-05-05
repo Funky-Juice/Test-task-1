@@ -1,5 +1,27 @@
 'use strict';
 
+
+
+function validateForm() {
+  var userForm = document.querySelector('#app .user-form');
+  var formInputs = userForm.querySelectorAll('.user-form__input');
+
+  for(var i = 0; i < formInputs.length; i++) {
+
+    var input = formInputs[i];
+    input.addEventListener('input', clearError);
+
+    var pattern = input.getAttribute('pattern');
+
+    pattern = new RegExp(pattern);
+
+    if (pattern.test(input.value) !== true) {
+      showError(input);
+      throw new Error('Заполните все поля');
+    }
+  };
+};
+
 function showError(input) {
   input.classList.add('error');
 
@@ -13,21 +35,14 @@ function showError(input) {
   input.parentNode.appendChild(div);
 }
 
-function validateForm() {
-  var userForm = document.querySelector('#app .user-form');
-  var formInputs = userForm.querySelectorAll('.user-form__input');
+function clearError() {
+  this.classList.remove('error');
 
-  for(var i = 0; i < formInputs.length; i++) {
+  var parentElem = this.parentNode;
+  var errorMessage = parentElem.querySelector('.error-text');
 
-    var input = formInputs[i];
-
-    var pattern = input.getAttribute('pattern');
-
-    pattern = new RegExp(pattern);
-
-    if (pattern.test(input.value) !== true) {
-      showError(input);
-    }
+  if(errorMessage) {
+    parentElem.removeChild(errorMessage);
   };
 };
 

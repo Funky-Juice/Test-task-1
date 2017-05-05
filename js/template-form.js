@@ -7,12 +7,12 @@ var templateForm = function() {
   return '<form class="user-form">' +
             '<label class="user-form__item">' +
               '<span class="user-form__field-name">Имя: </span>' +
-              '<input class="user-form__input" type="text" name="user_name" placeholder="Иванов Иван" pattern="[А-Яа-яЁё \s]+$" data-error="Укажите имя кириллицей" required>' +
+              '<input class="user-form__input" type="text" name="user_name" placeholder="Иванов Иван" pattern="[А-Яа-яЁё\s]{1,20}" data-error="Укажите имя кириллицей" required>' +
             '</label>' +
 
             '<label class="user-form__item">' +
               '<span class="user-form__field-name">Логин: </span>' +
-              '<input class="user-form__input" type="text" name="user_login" placeholder="Login" data-error="Не менее 5 символов" required>' +
+              '<input class="user-form__input" type="text" name="user_login" placeholder="Ivan1988" pattern="[A-Za-z0-9]{5,20}" data-error="Не менее 5 символов" required>' +
             '</label>' +
 
             '<label class="user-form__item">' +
